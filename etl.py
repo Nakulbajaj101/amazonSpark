@@ -104,7 +104,8 @@ def process_log_data(spark, input_data, output_data):
     
 
     # write time table to parquet files partitioned by year and month
-    time_table.write.parquet(output_data + "time",'overwrite')
+    time_table.write.partitionBy("year","month")\
+    .parquet(output_data + "time",'overwrite')
 
     # read in song data to use for songplays table
     song_df = spark.read.json(input_data + "song_data" + "/*/*/*/*.json")
@@ -144,7 +145,7 @@ def main():
     
     spark = create_spark_session()
     input_data = "s3a://udacity-dend/"
-    
+
     #Note: The output s3 bucket should be in same region as emr cluster
     output_data = "s3://nakuldefaultest/" 
     process_song_data(spark, input_data, output_data)    
