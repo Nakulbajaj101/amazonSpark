@@ -1,6 +1,6 @@
 # Sparkify Music Analytical Engine
 
-The purpose of the project is to build a database and design an
+The purpose of the project is to build a data cluster and design an
 ETL pipeline that would power the analytical needs for Sparkify.
 
 ## Motivation
